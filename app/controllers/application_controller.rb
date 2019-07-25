@@ -2,6 +2,11 @@ class ApplicationController < ActionController::API
   #     before_action :authorized
   # skip_before_action :authorized, only: [:create]
 
+
+  def index
+    render json: "hello"
+  end
+
   def encode_token(payload)
     # payload => { beef: 'steak' }
     JWT.encode(payload, 'my_s3cr3t')

@@ -1,18 +1,17 @@
 class PlantSerializer < ActiveModel::Serializer
-    attributes :id, :name, :owner, :water_interval, :water_amount, :last_watered_time, :species
-
+    attributes :id, :name, :description, :owner, :water_interval, :water_amount, :last_watered_time, :img_url, :species
     def owner
-      {ownerId: self.object.user.id, 
-       ownerName: self.object.user.name}
+      {owner_id: self.object.user.id, 
+       owner_name: self.object.user.name}
     end 
 
     def species
       {
         name: self.object.species.common_name,
-        defaultWaterInterval: self.object.species.default_water_interval,
-        defaultWaterAmount: self.object.species.default_water_amount,
-        heatPreference: self.object.species.heat_preference,
-        lightPreference: self.object.species.light_preference,
+        default_water_interval: self.object.species.default_water_interval,
+        default_water_amount: self.object.species.default_water_amount,
+        heat_preference: self.object.species.heat_preference,
+        light_preference: self.object.species.light_preference,
         toxicity: self.object.species.toxicity
       }
     end

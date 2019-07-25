@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_21_055700) do
+ActiveRecord::Schema.define(version: 2019_07_23_235540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,13 @@ ActiveRecord::Schema.define(version: 2019_07_21_055700) do
     t.string "name"
     t.integer "water_interval"
     t.string "water_amount"
-    t.datetime "last_watered_time"
+    t.string "last_watered_time"
     t.integer "user_id"
     t.integer "species_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
+    t.string "img_url"
   end
 
   create_table "species", force: :cascade do |t|

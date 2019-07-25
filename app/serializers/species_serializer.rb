@@ -6,8 +6,8 @@ class SpeciesSerializer < ActiveModel::Serializer
         object.plants.map do |plant|
         {
             name: plant.name, 
-            waterInterval: plant.water_interval, 
-            waterAmount: plant.water_amount, 
+            water_interval: plant.water_interval, 
+            water_amount: plant.water_amount, 
             species: plant.species.common_name
         }
         end 

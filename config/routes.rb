@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root :to => 'application#index'
-
+  
   namespace :api do
     namespace :v1 do
       resources :species
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
       resources :users
       post '/login', to: 'auth#login'
       get '/profile', to: 'users#profile'
-    en
+    end
+  end
 
 end

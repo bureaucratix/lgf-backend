@@ -1,6 +1,5 @@
 require 'bcrypt'
 class Api::V1::UsersController < ApplicationController
-    validates :password, :length => {:within => 6..40}
     skip_before_action :authorized, only: [:create, :index]
 
     def index 

@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: lgf_test
+  database: lgf_production
   # username: lgf
   # password: null

@@ -1,5 +1,7 @@
 require 'bcrypt'
 class Api::V1::UsersController < ApplicationController
+    skip_before_action :authorized, only: [:create]
+
     def index 
         users = User.all 
         render json: users
@@ -9,7 +11,7 @@ class Api::V1::UsersController < ApplicationController
         render json: { user: UserSerializer.new(current_user) }, status: :accepted
     end
 
-
+# unneccessary?
      def show 
         user = User.find(params[:id]) 
         render json: user
@@ -17,10 +19,12 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-        @user.password_digest = BCrypt::Password.create(params[:password], cost: cost)
+        # cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+        # @user.password_digest = BCrypt::Password.create(params[:password], cost: cost)
+        token = encode_token({ user_id: @user.id })
+            puts token 
         if @user.save
-            render json: { user: UserSerializer.new(@user) }, status: :created
+            render json: { user: UserSerializer.new(@user), jwt: token }, status: :created
         else
             render json: { error: 'failed to create user' }, status: :not_acceptable
         end

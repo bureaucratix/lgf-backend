@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :species
       resources :plants
       resources :users
-      post '/login', to: 'auth#login'
+      post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
     end
   end

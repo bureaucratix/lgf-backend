@@ -35,4 +35,6 @@ class Api::V1::PlantsController < ApplicationController
         params.require(:plant).permit(:name, :description, :last_watered_time, :water_interval, :water_amount, :img_url, :user_id, :species_id)
     end
 
+    #make some new actions/routes for searching by name re:alexas
+
 end

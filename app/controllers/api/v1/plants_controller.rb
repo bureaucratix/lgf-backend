@@ -1,5 +1,7 @@
 
 class Api::V1::PlantsController < ApplicationController
+    skip_before_action :authorized
+
     def index 
         render json: Plant.all
     end

@@ -1,4 +1,6 @@
 class Api::V1::SpeciesController < ApplicationController
+    skip_before_action :authorized
+
     def index 
         render json: Species.all
     end
